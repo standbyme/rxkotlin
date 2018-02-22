@@ -27,5 +27,6 @@ val observer: Observer<String> = object : Observer<String> {
 fun main(args: Array<String>) {
     val list = listOf("String 1", "String 2", "String 3", "String 4")
     val observableFromIterable: Observable<String> = Observable.fromIterable(list)//1
+    // You can also use `list.toObservable()` instead of `Observable.fromIterable(list)`
     observableFromIterable.subscribe(observer)
 }
