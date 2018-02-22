@@ -4,32 +4,28 @@ import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 
-fun main(args: Array<String>) {
-
-    // This observer is the same as the previous
-    val observer: Observer<String> = object : Observer<String> {
-        override fun onComplete() {
-            println("All Completed")
-        }
-
-        override fun onNext(item: String) {
-            println("Next $item")
-        }
-
-        override fun onError(e: Throwable) {
-            println("Error Occured ${e.message}")
-        }
-
-        override fun onSubscribe(d: Disposable) {
-            println("New Subscription ")
-        }
+// This observer is the same as the previous
+// https://www.jianshu.com/p/157126615f77
+val observer: Observer<String> = object : Observer<String> {
+    override fun onComplete() {
+        println("All Completed")
     }
 
+    override fun onNext(item: String) {
+        println("Next $item")
+    }
+
+    override fun onError(e: Throwable) {
+        println("Error Occured ${e.message}")
+    }
+
+    override fun onSubscribe(d: Disposable) {
+        println("New Subscription ")
+    }
+}
+
+fun main(args: Array<String>) {
     val list = listOf("String 1", "String 2", "String 3", "String 4")
     val observableFromIterable: Observable<String> = Observable.fromIterable(list)//1
     observableFromIterable.subscribe(observer)
-
-    val callable = { "From Callable" }
-    val observableFromCallable: Observable<String> = Observable.fromCallable(callable)//2
-    observableFromCallable.subscribe(observer)
 }
