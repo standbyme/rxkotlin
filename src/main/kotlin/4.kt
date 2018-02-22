@@ -7,3 +7,11 @@ fun main(args: Array<String>) {
         println("$i Output ${doSomeStuff(i)}")
     }
 }
+
+/*
+1 Output 1
+2 Output 4
+3 Output 9
+4 Output 16
+5 Output 25
+ */
