@@ -1,1 +1,15 @@
-// https://www.safaribooksonline.com/library/view/reactive-programming-in/9781788473026/89886e87-3ad4-4d9f-bb19-c1c5505ac1ee.xhtml
+import io.reactivex.Maybe
+import io.reactivex.rxkotlin.subscribeBy
+
+fun main(args: Array<String>) {
+    val maybeEmpty: Maybe<Int> = Maybe.empty()
+    maybeEmpty.subscribeBy(
+            onComplete = { println("Completed Empty") },
+            onError = { println("Error $it") },
+            onSuccess = { println("Completed with value $it") }
+    )
+}
+
+/*
+Completed Empty
+ */

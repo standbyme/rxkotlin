@@ -10,15 +10,8 @@ fun main(args: Array<String>) {
             onError = { println("Error $it") },
             onSuccess = { println("Completed with value $it") }
     )
-    val maybeEmpty: Maybe<Int> = Maybe.empty()
-    maybeEmpty.subscribeBy(
-            onComplete = { println("Completed Empty") },
-            onError = { println("Error $it") },
-            onSuccess = { println("Completed with value $it") }
-    )
 }
 
 /*
 Completed with value 14
-Completed Empty
  */
