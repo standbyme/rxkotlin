@@ -1,12 +1,12 @@
 import io.reactivex.subjects.*
 
-fun isEven(n: Int): Boolean = ((n % 2) == 0)
+fun isEvenOrOdd(n: Int): String = if ((n % 2) == 0) "Even" else "Odd"
 
 fun main(args: Array<String>) {
     val subject: Subject<Int> = PublishSubject.create()
 
-    subject.map({ isEven(it) }).subscribe({
-        println("The number is ${(if (it) "Even" else "Odd")}")
+    subject.map({ isEvenOrOdd(it) }).subscribe({
+        println("The number is $it")
     })
 
     subject.onNext(4)
