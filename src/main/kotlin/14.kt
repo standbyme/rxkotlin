@@ -3,6 +3,7 @@ import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
 
+// Dispose: 处理
 fun main(args: Array<String>) {
 
     val observale: Observable<Long> = Observable.interval(100, TimeUnit.MILLISECONDS)
@@ -15,12 +16,11 @@ fun main(args: Array<String>) {
         }
 
         override fun onNext(item: Long) {
-            println("Received $item")
             if (item >= 5 && !disposable.isDisposed) {//4
                 disposable.dispose()//5
-                println("Stop")
+                println("Disposed")
             }
-            println("Received $item")
+            println("Received $item")//Disposed buhuijixuchuliqitazhi danshizheyilunyaozhixingwan suoyihuiyou Received 5
         }
 
         override fun onError(e: Throwable) {
@@ -34,7 +34,7 @@ fun main(args: Array<String>) {
     }
 
     observale.subscribe(observer)
-    Thread.sleep(1500)
+    Thread.sleep(1000)
 }
 
 /*
