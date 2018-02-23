@@ -2,7 +2,7 @@
 
 import io.reactivex.Observable
 
-fun main(args: Array<String>) {
+fun complete() {
     val observable: Observable<String> = Observable.create<String> {
         // it: ObservableEmitter<String!>
         it.onNext("Emit 1")
@@ -13,7 +13,9 @@ fun main(args: Array<String>) {
     }
 
     observable.subscribe(observer)
+}
 
+fun error() {
     val observable2: Observable<String> = Observable.create<String> {
         // it: ObservableEmitter<String!>
         it.onNext("Emit 1")
@@ -24,6 +26,11 @@ fun main(args: Array<String>) {
     }
 
     observable2.subscribe(observer)
+}
+
+fun main(args: Array<String>) {
+    complete()
+    error()
 }
 
 /*
