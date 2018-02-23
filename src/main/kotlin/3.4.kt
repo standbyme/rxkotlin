@@ -11,5 +11,5 @@ fun main(args: Array<String>) {
 
 /*
 New Subscription
-Next 1
+All Completed
  */
