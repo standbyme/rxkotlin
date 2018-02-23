@@ -3,12 +3,11 @@
 import io.reactivex.Observable
 
 fun complete() {
-    val observable: Observable<String> = Observable.create<String> {
+    val observable: Observable<Int> = Observable.create<Int> {
         // it: ObservableEmitter<String!>
-        it.onNext("Emit 1")
-        it.onNext("Emit 2")
-        it.onNext("Emit 3")
-        it.onNext("Emit 4")
+        it.onNext(1)
+        it.onNext(2)
+        it.onNext(3)
         it.onComplete()
     }
 
@@ -16,12 +15,11 @@ fun complete() {
 }
 
 fun error() {
-    val observable2: Observable<String> = Observable.create<String> {
+    val observable2: Observable<Int> = Observable.create<Int> {
         // it: ObservableEmitter<String!>
-        it.onNext("Emit 1")
-        it.onNext("Emit 2")
-        it.onNext("Emit 3")
-        it.onNext("Emit 4")
+        it.onNext(1)
+        it.onNext(2)
+        it.onNext(3)
         it.onError(Exception("My Custom Exception"))
     }
 
@@ -35,15 +33,13 @@ fun main(args: Array<String>) {
 
 /*
 New Subscription
-Next Emit 1
-Next Emit 2
-Next Emit 3
-Next Emit 4
+Next 1
+Next 2
+Next 3
 All Completed
 New Subscription
-Next Emit 1
-Next Emit 2
-Next Emit 3
-Next Emit 4
+Next 1
+Next 2
+Next 3
 Error Occured My Custom Exception
  */
