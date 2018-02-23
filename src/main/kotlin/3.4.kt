@@ -8,3 +8,8 @@ fun main(args: Array<String>) {
 
     observable.subscribe(observer)
 }
+
+/*
+New Subscription
+Next 1
+ */
