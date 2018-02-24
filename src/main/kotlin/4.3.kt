@@ -1,54 +1,17 @@
 import io.reactivex.Observable
-import io.reactivex.Observer
-import io.reactivex.disposables.Disposable
-import java.util.concurrent.TimeUnit
+import io.reactivex.rxkotlin.toObservable
 
-// Dispose: 处理
+//Cold Observables
 fun main(args: Array<String>) {
+    val observable: Observable<Int> = listOf(1, 2, 3, 4).toObservable()
 
-    val observale: Observable<Long> = Observable.interval(100, TimeUnit.MILLISECONDS)
+    observable.subscribe(observer)
 
-    val observer: Observer<Long> = object : Observer<Long> {
-        lateinit var disposable: Disposable//2
-
-        override fun onSubscribe(d: Disposable) {
-            disposable = d//3
-        }
-
-        override fun onNext(item: Long) {
-            if (item >= 5 && !disposable.isDisposed) {//4
-                disposable.dispose()//5
-                println("Disposed")
-            }
-            println("Received $item")//Disposed buhuijixuchuliqitazhi danshizheyilunyaozhixingwan suoyihuiyou Received 5
-        }
-
-        override fun onError(e: Throwable) {
-            println("Error ${e.message}")
-        }
-
-        override fun onComplete() {
-            println("Complete")
-        }
-
-    }
-
-    observale.subscribe(observer)
-    Thread.sleep(1000)
+    observable.subscribe(observer)
 }
 
 /*
-Received 0
-Received 0
-Received 1
-Received 1
-Received 2
-Received 2
-Received 3
-Received 3
-Received 4
-Received 4
-Received 5
-Stop
-Received 5
+For both the subscribe calls, you got the exact same emission from the first one to the last one.
+All the Observable factory methods we have used up until this chapter return Cold Observables
+Cold Observables are passive, they don't emit anything until subscribe is called.
  */
