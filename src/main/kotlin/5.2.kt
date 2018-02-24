@@ -1,26 +1,23 @@
 // 5.2.kt
-import io.reactivex.subjects.AsyncSubject
+import io.reactivex.Observable
+import java.util.concurrent.TimeUnit
 
 fun main(args: Array<String>) {
-    val subject = AsyncSubject.create<Int>()
-    subject.onNext(1)
-    subject.onNext(2)
-    subject.subscribe(observer)
-    subject.onNext(3)
-    subject.subscribe(observer)
-    subject.onComplete()
+    val observable = Observable.interval(100, TimeUnit.MILLISECONDS)
+
+    observable.subscribe({ println("Subscription 1 Received $it") })
+    Thread.sleep(200)
+    observable.subscribe({ println("Subscription 2 Received $it") })
+    Thread.sleep(300)
 }
 
 /*
-New Subscription
-New Subscription
-Next 3
-All Completed
-Next 3
-All Completed
- */
-
-/*
-As ConnectableObservable starts emitting on call of connect,
-AsyncSubject emits its only value on call of onComplete only.
+Subscription 1 Received 0
+Subscription 1 Received 1
+Subscription 1 Received 2
+Subscription 2 Received 0
+Subscription 1 Received 3
+Subscription 2 Received 1
+Subscription 1 Received 4
+Subscription 2 Received 2
  */
