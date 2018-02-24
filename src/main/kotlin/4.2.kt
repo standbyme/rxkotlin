@@ -39,16 +39,10 @@ fun main(args: Array<String>) {
 
 /*
 Received 0
-Received 0
-Received 1
 Received 1
 Received 2
-Received 2
-Received 3
 Received 3
 Received 4
-Received 4
-Received 5
-Stop
+Disposed
 Received 5
  */
