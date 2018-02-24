@@ -7,10 +7,10 @@ fun main(args: Array<String>) {
         println("Next $it")
     }, {
         //onError Method
-        println("Error ${it.message}")
+        println("Error Occured ${it.message}")
     }, {
         //onComplete Method
-        println("Done")
+        println("All Completed")
     })
 }
 
@@ -18,5 +18,5 @@ fun main(args: Array<String>) {
 Next 1
 Next 2
 Next 3
-Done
+All Completed
  */
