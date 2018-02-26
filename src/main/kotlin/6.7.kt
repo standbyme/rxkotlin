@@ -4,7 +4,7 @@ import io.reactivex.rxkotlin.subscribeBy
 
 fun main(args: Array<String>) {
     // Single will be introduced next
-    val count:Single<Long> = Observable.just(2, 30, 22, 5, 60, 1).count()
+    val count: Single<Long> = Observable.just(2, 30, 22, 5, 60, 1).count()
     count.subscribeBy { println(it) }
 }
 

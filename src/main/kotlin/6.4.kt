@@ -2,7 +2,8 @@
 import io.reactivex.Observable
 
 fun main(args: Array<String>) {
-    Observable.range(0, 10)//(1)
+    Observable
+            .range(0, 10)//(1)
             .filter { it > 15 }//(2)
             .subscribe(observer)
 }
