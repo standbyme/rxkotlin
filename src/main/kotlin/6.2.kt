@@ -17,5 +17,4 @@ All Completed
 
 /*
 Filtering Observables
-flatMap -- Monad
  */
