@@ -13,3 +13,9 @@ New Subscription
 Next 15
 All Completed
  */
+
+/*
+Conditional and Boolean Operators
+DefaultIfEmpty
+http://reactivex.io/documentation/operators/images/defaultIfEmpty.c.png
+ */

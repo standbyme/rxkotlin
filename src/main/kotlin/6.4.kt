@@ -11,7 +11,3 @@ fun main(args: Array<String>) {
 New Subscription
 All Completed
  */
-/*
-Conditional and Boolean Operators
-
- */
