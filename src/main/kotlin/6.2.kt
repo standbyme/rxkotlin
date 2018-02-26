@@ -1,9 +1,9 @@
 // 6.2.kt
 
-import io.reactivex.rxkotlin.toObservable
+import io.reactivex.Observable
 
 fun main(args: Array<String>) {
-    val observable = listOf(2, 30, 22, 5, 60, 1).toObservable()
+    val observable = Observable.just(2, 30, 22, 5, 60, 1)
     observable.filter { x -> x > 10 }.subscribe(observer)  // it > 10
 }
 
