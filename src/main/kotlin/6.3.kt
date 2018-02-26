@@ -12,10 +12,10 @@ fun main(args: Array<String>) {
 New Subscription
 Next 2
 Next 3
-Next 3
-Next 4
-Next 4
-Next 5
+Next 6
+Next 7
+Next 10
+Next 11
 All Completed
  */
 
