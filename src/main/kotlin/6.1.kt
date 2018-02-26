@@ -1,8 +1,8 @@
 // 6.1.kt
-import io.reactivex.rxkotlin.toObservable
+import io.reactivex.Observable
 
 fun main(args: Array<String>) {
-    val observable = listOf(1, 2, 3).toObservable()
+    val observable = Observable.just(1, 2, 3)
     observable.map { x -> 10 * x }.subscribe(observer)  // 10*it
 }
 
