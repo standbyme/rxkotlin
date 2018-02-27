@@ -2,7 +2,7 @@
 import io.reactivex.Observable
 
 fun main(args: Array<String>) {
-    Observable.range(2, 3)  // range(start, **count**) not end
+    Observable.just(2, 3)
             .startWith(1)
             .subscribe(observer)
 }
