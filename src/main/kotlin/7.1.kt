@@ -8,11 +8,10 @@ fun main(args: Array<String>) {
         }
     }
 
-    val observable = Observable.just(1, 2, 3).map { Item(it) }
-    observable
+    Observable.just(1, 2, 3).map { Item(it) }
             .subscribe({
                 println("Received $it")
-                Thread.sleep(500)
+                Thread.sleep(100)
             })
     Thread.sleep(1000)
 }

@@ -9,12 +9,11 @@ fun main(args: Array<String>) {
         }
     }
 
-    val observable = Observable.just(1, 2, 3).map { Item(it) }
-    observable
-            .observeOn(Schedulers.newThread())
+    Observable.just(1, 2, 3).map { Item(it) }
+            .observeOn(Schedulers.newThread())  // Schedulers will be introduced in next chapter
             .subscribe({
+                Thread.sleep(100)
                 println("Received $it")
-                Thread.sleep(500)
             })
     Thread.sleep(1000)
 }
@@ -74,5 +73,6 @@ Probably, the only difference between Flowables and Observables is that Flowable
 
 /*
 Flowables were added in ReactiveX 2.x (RxKotlin 2.X), and the previous versions don't include them.
+let's replace Observable with Flowable
  */
 
