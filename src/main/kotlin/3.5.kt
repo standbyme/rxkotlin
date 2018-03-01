@@ -1,4 +1,3 @@
-// https://www.safaribooksonline.com/library/view/reactive-programming-in/9781788473026/ce6a69b9-ea5c-44a6-952f-d3a8ed0af8e8.xhtml
 
 import io.reactivex.Observable
 
