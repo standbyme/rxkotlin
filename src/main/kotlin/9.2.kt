@@ -1,72 +1,26 @@
 import io.reactivex.Observable
-import io.reactivex.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 fun main(args: Array<String>) {
-    Observable.range(1, 3)
-            .subscribeOn(Schedulers.computation())  //Add
-            .subscribe {
-                Thread.sleep(200)
-                println("1. $it")
-            }
 
-    Observable.range(10, 3)
-            .subscribeOn(Schedulers.computation())  //Add
-            .subscribe {
-                Thread.sleep(100)
-                println("2. $it")
-            }
-    Thread.sleep(700)  // Add
+    Observable.interval(500, TimeUnit.MILLISECONDS)
+            .subscribe { println(it) }
+
+    Thread.sleep(2500)
 }
 
 /*
-2. 10
-1. 1
-2. 11
-2. 12
-1. 2
-1. 3
+0
+1
+2
+3
+4
  */
-
 /*
-Observable in this example is emitted concurrently.
-
-The line of the subscribeOn(Schedulers.computation()) code
-enabled both downstreams to subscribe to the Observable in a different (background) thread,
-which influenced concurrency.
- */
-
-/*
-As all the operations are being performed in different threads,
-we need to block the main thread to keep the program alive.
- */
-
-/*
-Schedulers.io() provides us with I/O bound threads.
-To be more accurate, Schedulers.io() provides you with ThreadPool,
-which can create an unbounded number of worker threads that are meant to be performing I/O bounded tasks.
- */
-
-/*
-The main reason why we should consider
-Schedulers.io() for I/O boundtasks and
-Schedulers.computation() for computational purposes is that computation() threads utilizethe processors better and create no more threads than the available CPUcores,
-and reuses them. While Schedulers.io() is unbounded, and if youschedule10,000 computational tasks on io() in parallel,
-then each of those 10,000 tasks each have their own thread and be competing for CPU incurring context switching costs.
- */
-
-/*
-The Schedulers.newThread() provides us with a scheduler that creates a new thread for each task provided.
-While at first glance it may seem similar to Schedulers.io(), there's actually a huge difference.
-
-The Schedulers.io() uses a thread pool, and whenever it gets a new unit of work,
-it first looks into the thread pool to see if any idle thread is available to take up the task;
-it proceeds to create a new thread if no pre-existing thread is available to take up the work.
-
-However, Schedulers.newThread() doesn't even use a thread pool; instead,
-it creates a new thread for every request and forgets them forever.
-
-In most of the cases, when you're not using Schedulers.computation(),
-you should consider Schedulers.io() and should predominantly avoid using Schedulers.newThread(); 
-threads are very expensive resources,
-you should try to avoid the creation of new threads as much as possible.
+This Observable will actually fire on a thread other than the main one.
+Effectively, the main thread will kick-off Observable.interval(),
+but not wait for it to complete because it is operating on its own separate thread now.
+This, in fact, makes it a concurrent application because it is leveraging two threads now.
+If we do not call a sleep() method to pause the main thread,
+it will charge to the end of the main() method and quit the application before the intervals have a chance to fire.
  */

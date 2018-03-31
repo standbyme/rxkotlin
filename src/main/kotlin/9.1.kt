@@ -33,7 +33,11 @@ as per our business logic and requirements with ease.
  */
 /*So, whenever you subscribe to an Observable and/or Flowable,
 the current thread is blocked until all the items are emitted and received by the Observer chain
-(except for the cases with interval and timer factory methods).*/
+(except for the cases with interval and timer factory methods).
+ By default, Observables execute work on the immediate thread,
+ which is the thread that declared the Observer and subscribed it. 
+ In many of our earlier examples,
+ this was the main thread that kicked off our main() method.*/
 /*
 by default,
 the Observable and the chain of operators applied to it will do the work on the same thread where subscribe is called,
